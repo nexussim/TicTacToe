@@ -1,0 +1,35 @@
+body {
+    background-color: rgba(255, 65, 0, .4);
+}
+
+#masterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;
+}
+
+#gameContainer {
+    width: 350px;
+    height: 350px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid green;
+    width: 100px;
+    height: 100px;
+    font-size: 100px;
+    color: rgb(5, 149, 182);
+    font-family: Helvetica, sans-serif;
+}
+
