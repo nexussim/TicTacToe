@@ -36,17 +36,13 @@ const victoryConditions = (event) => {
 
     if (box1.textContent !== '' && box1.textContent === box2.textContent && box1.textContent === box3.textContent) {
         alert('Victory');
-    } else if (box3.textContent !== '' && box3.textContent === box4.textContent && box3.textContent === box5.textContent) {
-        alert('Victory');
-    } else if (box6.textContent !== '' && box6.textContent === box7.textContent && box6.textContent === box8.textContent) {
-        alert('Victory');
     } else if (box1.textContent !== '' && box1.textContent === box4.textContent && box1.textContent === box7.textContent) {
         alert('Victory');
-    } else if (box2.textContent !== '' && box2.textContent === box5.textContent && box2.textContent === box8.textContent) {
+    } else if (box1.textContent !== '' && box1.textContent === box5.textContent && box1.textContent === box9.textContent) {
         alert('Victory');
     } else if (box3.textContent !== '' && box3.textContent === box6.textContent && box3.textContent === box9.textContent) {
         alert('Victory');
-    } else if (box1.textContent !== '' && box1.textContent === box5.textContent && box1.textContent === box9.textContent) {
+    } else if (box2.textContent !== '' && box2.textContent === box5.textContent && box2.textContent === box8.textContent) {
         alert('Victory');
     } else if (box3.textContent !== '' && box3.textContent === box5.textContent && box3.textContent === box7.textContent) {
         alert('Victory');
