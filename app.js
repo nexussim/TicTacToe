@@ -50,7 +50,12 @@ const victoryConditions = (event) => {
         alert('Victory');
     } else if (box3.textContent !== '' && box3.textContent === box5.textContent && box3.textContent === box7.textContent) {
         alert('Victory');
+    } else if (box4.textContent !== '' && box4.textContent === box5.textContent && box4.textContent === box6.textContent) {
+        alert('Victory');
+    } else if (box7.textContent !== '' && box7.textContent === box8.textContent && box7.textContent === box9.textContent) {
+        alert('Victory');
     }
+    
 }
 
 // const victoryConditions = () => {
