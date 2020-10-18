@@ -24,9 +24,27 @@
         <div id="resetGameContainer">
             <button id="resetGameButton" onclick="resetBoard(event)">Reset Game</button>
         </div>
-        
-        
+        <div>
+            <h2>Score</h2>
+        </div>
+        <div id='scoreCardContainer'>
+            <div id="scoreCard">
+                <div id="card">
+                    <div id="topLeftSide" ondblclick="playerNames(event)">
+                        <input id='firstPlayerInput' placeholder="Enter P1 name..." onkeyup="playerNames(event)">
+                    </div>
+                    <div id="topRightSide" ondblclick="playerNames(event)">
+                        <input id='secondPlayerInput' placeholder="Enter P2 name..." onkeyup="playerNames(event)">
+                    </div>
+                    <div id="bottomLeftSide"></div>
+                    <div id="bottomRightSide"></div>
+                </div>
+                
+            </div>
+        </div>
     </body>
     <script src="app.js"></script>
 </html>
+
+
 

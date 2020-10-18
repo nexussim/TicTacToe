@@ -1,5 +1,4 @@
-// implement no victory condition
-// fix victory text setup (h2 inside of div?)
+/* Game Board variables */
 
 let boxes = document.querySelectorAll('.box');
 let box1 = document.getElementById('box1');
@@ -12,6 +11,19 @@ let box7 = document.getElementById('box7');
 let box8 = document.getElementById('box8');
 let box9 = document.getElementById('box9');
 let victorymsg = document.getElementById(victoryMsg);
+
+/* Score Card variables */
+const topLeftCellConst = document.getElementById('topLeftSide').childNodes[1];
+const topRightCellConst = document.getElementById('topRightSide').childNodes[1];
+let topLeftCell = document.getElementById('topLeftSide');
+let topRightCell = document.getElementById('topRightSide');
+let bottomLeftCell = document.getElementById('bottomLeftSide');
+let bottomRightCell = document.getElementById('bottomRightSide');
+let firstPlayerName = document.getElementById('firstPlayerInput');
+let secondPlayerName = document.getElementById('secondPlayerInput');
+let firstPlayerScore = 0;
+let secondPlayerScore = 0;
+
 
 let firstPlayerToken = 'X';
 let secondPlayerToken = 'O'
@@ -67,8 +79,12 @@ const congratsMsg = (boxContent) => {
 
     if (boxContent === 'X') {
         winningPlayer = 'Player 1'
+        firstPlayerScore++;
+        scoreBoardCount();
     } else {
         winningPlayer = 'Player 2'
+        secondPlayerScore++;
+        scoreBoardCount();
     }
     victoryMsg.textContent = 'Congratulations ' + winningPlayer + '!';
     firstPlayerToken = '';
@@ -84,4 +100,23 @@ const resetBoard = (event) => {
     secondPlayerToken = 'O'
     xCounter = 0;
     yCounter = 0;
+}
+
+const scoreBoardCount = () => {
+    bottomLeftCell.textContent = firstPlayerScore;
+    bottomRightCell.textContent = secondPlayerScore;
+}
+
+const playerNames = (event) => {
+    let selectedInput = event.target;
+    if (event.keyCode === 13) {
+        selectedInput.parentNode.textContent = selectedInput.value;
+    }
+    if (selectedInput === topLeftCell) {
+        topLeftCell.innerHTML = topLeftCellConst;
+        
+    }
+    if (selectedInput === topRightCell) {
+        selectedInput.innerHTML = secondPlayerName;
+    }
 }
