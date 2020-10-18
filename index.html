@@ -4,6 +4,9 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <div>
+            <h1>TicTacToe</h1>
+        </div>
         <div id="masterContainer">
             <div id="gameContainer" onclick="boardPlacement(event)">
                 <div id="box1" class="box"></div>
@@ -17,6 +20,10 @@
                 <div id="box9" class="box"></div>
             </div>
         </div>
+        <div id="resetGameContainer">
+            <button id="resetGameButton" onclick="resetBoard(event)">Reset Game</button>
+        </div>
+        <div id="victoryMsg"></div>
         
     </body>
     <script src="app.js"></script>
