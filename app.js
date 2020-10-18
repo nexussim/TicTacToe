@@ -71,6 +71,8 @@ const congratsMsg = (boxContent) => {
         winningPlayer = 'Player 2'
     }
     victoryMsg.textContent = 'Congratulations ' + winningPlayer + '!';
+    firstPlayerToken = '';
+    secondPlayerToken = ''
 }
 
 const resetBoard = (event) => {
@@ -78,6 +80,8 @@ const resetBoard = (event) => {
         boxes[i].textContent = '';
     }
     victoryMsg.textContent = '';
+    firstPlayerToken = 'X';
+    secondPlayerToken = 'O'
     xCounter = 0;
     yCounter = 0;
 }
