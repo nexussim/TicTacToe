@@ -29,12 +29,12 @@
         </div>
         <div id='scoreCardContainer'>
             <div id="scoreCard">
-                <div id="card">
-                    <div id="topLeftSide" ondblclick="playerNames(event)">
-                        <input id='firstPlayerInput' placeholder="Enter P1 name..." onkeyup="playerNames(event)">
+                <div id="card" onkeyup="playerNames(event)">
+                    <div id="topLeftSide" ondblclick="playerNamesUpdate(event)">
+                        <input id='firstPlayerInput' type="text" autofocus placeholder="Enter P1 name...">
                     </div>
-                    <div id="topRightSide" ondblclick="playerNames(event)">
-                        <input id='secondPlayerInput' placeholder="Enter P2 name..." onkeyup="playerNames(event)">
+                    <div id="topRightSide" ondblclick="playerNamesUpdate(event)">
+                        <input id='secondPlayerInput' type="text" placeholder="Enter P2 name...">
                     </div>
                     <div id="bottomLeftSide"></div>
                     <div id="bottomRightSide"></div>
