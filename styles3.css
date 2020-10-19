@@ -1,11 +1,11 @@
 html {
-    color: rgb(5, 149, 182);
+    color: rgba(255, 255, 255, 0.781);
     font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
     user-select: none;
 }
 body {
     
-    background-color: rgba(255, 65, 0, .4);
+    background-color: rgba(15, 17, 17, 0.767);
 }
 
 h1 {
@@ -45,8 +45,9 @@ h1 {
     width: 100px;
     height: 100px;
     font-size: 100px;
-    color: rgb(5, 149, 182);
+    color: rgba(255, 255, 255, 0.781);
     font-family: Helvetica, sans-serif;
+    background-color: rgba(255, 65, 0, .2);
 }
 
 #resetGameContainer {
@@ -63,11 +64,11 @@ h1 {
     flex-shrink: 0;
     outline: 0;
     border: 6px solid green;
-    background-color:rgba(240, 166, 142, 0.863);
+    background-color: rgba(255, 65, 0, .2);
     width: 240px;
     height: 50px;
     font-size: 26px;
-    color: rgb(5, 149, 182);
+    color: rgba(255, 255, 255, 0.781);
     font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
     
 }
@@ -141,6 +142,7 @@ h1 {
         width: 350px;
         height: 100px;
         border: 6px solid green;
+        background-color: rgba(255, 65, 0, .2);
     }
 
     #topLeftSide {
@@ -152,7 +154,7 @@ h1 {
         max-width: 12ch;
         border-bottom: 6px solid green;
         border-right: 6px solid green;
-        background-color:rgba(240, 166, 142, 0.863);
+        
     }
 
     #topRightSide {
@@ -163,7 +165,7 @@ h1 {
         overflow: hidden;
         max-width: 12ch;
         border-bottom: 6px solid green;
-        background-color:rgba(240, 166, 142, 0.863);
+        
     }
 
     #bottomLeftSide {
@@ -172,7 +174,7 @@ h1 {
         align-items: center;
         font-size: 24px;
         border-right: 6px solid green;
-        background-color:rgba(240, 166, 142, 0.863);
+        
     }
 
     #bottomRightSide {
@@ -180,7 +182,7 @@ h1 {
         justify-content: center;
         align-items: center;
         font-size: 24px;
-        background-color:rgba(240, 166, 142, 0.863);
+        
     }
 
     input {
@@ -190,7 +192,7 @@ h1 {
         outline: 0;
         font-size: 24px;
         color: rgb(5, 149, 182);
-        background-color:rgba(240, 166, 142, 0.863);
+        background-color: rgba(255, 64, 0, 0.027);
         font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
         
     }

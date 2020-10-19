@@ -11,6 +11,8 @@ let box7 = document.getElementById('box7');
 let box8 = document.getElementById('box8');
 let box9 = document.getElementById('box9');
 let victorymsg = document.getElementById('victoryMsg');
+let previousRoundFirstPlayer;
+let lastPlayer;
 
 /* Score Card variables */
 const topLeftCellConst = document.getElementById('topLeftSide').childNodes[1];
@@ -31,7 +33,7 @@ let firstPlayerToken = 'X';
 let secondPlayerToken = 'O'
 let winningPlayer;
 let xCounter = 0;
-let yCounter = 0;
+let oCounter = 0;
 let totalCount;
 
 const boardPlacement = (event) => {
@@ -40,22 +42,36 @@ const boardPlacement = (event) => {
     if (clickedElement.textContent) {
         return;
     }
-    if (xCounter === 0 && yCounter === 0) {
+    if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === undefined) {
         clickedElement.textContent = firstPlayerToken;
+        previousRoundFirstPlayer = firstPlayerToken
+        lastPlayer = firstPlayerToken;
         xCounter++;
-    } else if (xCounter > yCounter) {
+    } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === firstPlayerToken) {
         clickedElement.textContent = secondPlayerToken;
-        yCounter++;
+        previousRoundFirstPlayer = secondPlayerToken
+        lastPlayer = secondPlayerToken;
+        oCounter++;
+    } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === secondPlayerToken) {
+        clickedElement.textContent = firstPlayerToken;
+        previousRoundFirstPlayer = firstPlayerToken
+        lastPlayer = firstPlayerToken;
+        xCounter++;
+    } else if (xCounter > oCounter || lastPlayer === firstPlayerToken) {
+        clickedElement.textContent = secondPlayerToken;
+        lastPlayer = secondPlayerToken;
+        oCounter++;
     } else {
         clickedElement.textContent = firstPlayerToken;
+        lastPlayer = firstPlayerToken;
         xCounter++;
     }
     playerTurnUpdate();
     victoryConditions(event);
 }
 
-const victoryConditions = (victoryMessage) => {
-    totalCount = xCounter + yCounter;
+const victoryConditions = () => {
+    totalCount = xCounter + oCounter;
 
     if (box1.textContent !== '' && box1.textContent === box2.textContent && box1.textContent === box3.textContent) {
         congratsMsg(box1.textContent);
@@ -94,9 +110,9 @@ const congratsMsg = (boxContent) => {
         winningPlayer = topRightCell.textContent;
         secondPlayerScore++;
         scoreBoardCount();
-    } else if ((boxContent === 'O' && firstPlayerNameText === undefined)) {
+    } else if ((boxContent === 'O' && secondPlayerNameText === undefined)) {
         winningPlayer = 'Player 2!';
-        firstPlayerScore++;
+        secondPlayerScore++;
         scoreBoardCount();
     }
 
@@ -105,7 +121,7 @@ const congratsMsg = (boxContent) => {
     secondPlayerToken = ''
 }
 
-const resetBoard = (event) => {
+const resetBoard = () => {
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].textContent = '';
     }
@@ -113,7 +129,8 @@ const resetBoard = (event) => {
     firstPlayerToken = 'X';
     secondPlayerToken = 'O'
     xCounter = 0;
-    yCounter = 0;
+    oCounter = 0;
+    lastPlayer = '';
 }
 
 const scoreBoardCount = () => {
@@ -152,7 +169,7 @@ const playerNamesUpdate = (event) => {
 }
 
 const playerTurnUpdate = () => {
-    if (xCounter > yCounter) {
+    if (xCounter > oCounter) {
         if (secondPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topRightCell.textContent + '\'s turn.';
             
@@ -162,7 +179,7 @@ const playerTurnUpdate = () => {
         } 
     }
     
-    if (xCounter <= yCounter) {
+    if (xCounter <= oCounter) {
         if (firstPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
                 
@@ -173,4 +190,40 @@ const playerTurnUpdate = () => {
     }       
 }
 
+const styleChanges = () => {
+    let styles = document.getElementById('styles');
+    let cssFile = styles.attributes.href.nodeValue;
+    // styles.href = 'C:/Users/Andrew/Desktop/Coding/Personal_Projects/TicTacToe/styles2.css';
+    if (cssFile === 'styles.css') {
+        styles.attributes.href.nodeValue = 'styles2.css';
+    } else if (cssFile === 'styles2.css') {
+        styles.attributes.href.nodeValue = 'styles3.css';
+    } else if (cssFile === 'styles3.css') {
+        styles.attributes.href.nodeValue = 'styles.css';
+    }
+}
 
+
+
+
+
+// if (clickedElement.textContent) {
+//     return;
+// }
+// if (xCounter === 0 && oCounter === 0 && firstPlayerScore === 0 && secondPlayerScore === 0) {
+//     clickedElement.textContent = firstPlayerToken;
+//     previousRoundFirstPlayer = firstPlayerToken;
+//     xCounter++;
+// } else if (xCounter === 0 && oCounter === 0 && firstPlayerScore < secondPlayerScore) {
+//     clickedElement.textContent = firstPlayerToken;
+//     xCounter++;
+// } else if (xCounter === 0 && oCounter === 0 && firstPlayerScore > secondPlayerScore) {
+//     clickedElement.textContent = secondPlayerToken;
+//     oCounter++;
+// } else if (xCounter > oCounter) {
+//     clickedElement.textContent = secondPlayerToken;
+//     oCounter++;
+// } else {
+//     clickedElement.textContent = firstPlayerToken;
+//     xCounter++;
+// }
