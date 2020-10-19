@@ -15,6 +15,7 @@ let previousRoundFirstPlayer;
 let lastPlayer;
 
 /* Score Card variables */
+
 const topLeftCellConst = document.getElementById('topLeftSide').childNodes[1];
 const topRightCellConst = document.getElementById('topRightSide').childNodes[1];
 let topLeftCell = document.getElementById('topLeftSide');
@@ -25,10 +26,11 @@ let firstPlayerName = document.getElementById('firstPlayerInput');
 let secondPlayerName = document.getElementById('secondPlayerInput');
 let firstPlayerNameText;
 let secondPlayerNameText;
+
+/* Tokens and Counters */
+
 let firstPlayerScore = 0;
 let secondPlayerScore = 0;
-
-
 let firstPlayerToken = 'X';
 let secondPlayerToken = 'O'
 let winningPlayer;
@@ -169,31 +171,28 @@ const playerNamesUpdate = (event) => {
 }
 
 const playerTurnUpdate = () => {
-    if (xCounter > oCounter) {
+
+    if (lastPlayer === 'X') {
         if (secondPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topRightCell.textContent + '\'s turn.';
-            
         } else if (!secondPlayerNameText) {
-            victorymsg.textContent = 'Second Players turn.';
+            victorymsg.textContent = 'Second Players (O) turn.';
             return;
         } 
     }
-    
-    if (xCounter <= oCounter) {
-        if (firstPlayerNameText) {
+    if (lastPlayer === 'O') {
+        if (secondPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
-                
-        } else if (!firstPlayerNameText) {
-            victorymsg.textContent = 'First Players turn.';
+        } else if (!secondPlayerNameText) {
+            victorymsg.textContent = 'First Players (X) turn.';
             return;
-        }
-    }       
+        } 
+    }    
 }
 
 const styleChanges = () => {
     let styles = document.getElementById('styles');
     let cssFile = styles.attributes.href.nodeValue;
-    // styles.href = 'C:/Users/Andrew/Desktop/Coding/Personal_Projects/TicTacToe/styles2.css';
     if (cssFile === 'styles.css') {
         styles.attributes.href.nodeValue = 'styles2.css';
     } else if (cssFile === 'styles2.css') {
@@ -202,28 +201,3 @@ const styleChanges = () => {
         styles.attributes.href.nodeValue = 'styles.css';
     }
 }
-
-
-
-
-
-// if (clickedElement.textContent) {
-//     return;
-// }
-// if (xCounter === 0 && oCounter === 0 && firstPlayerScore === 0 && secondPlayerScore === 0) {
-//     clickedElement.textContent = firstPlayerToken;
-//     previousRoundFirstPlayer = firstPlayerToken;
-//     xCounter++;
-// } else if (xCounter === 0 && oCounter === 0 && firstPlayerScore < secondPlayerScore) {
-//     clickedElement.textContent = firstPlayerToken;
-//     xCounter++;
-// } else if (xCounter === 0 && oCounter === 0 && firstPlayerScore > secondPlayerScore) {
-//     clickedElement.textContent = secondPlayerToken;
-//     oCounter++;
-// } else if (xCounter > oCounter) {
-//     clickedElement.textContent = secondPlayerToken;
-//     oCounter++;
-// } else {
-//     clickedElement.textContent = firstPlayerToken;
-//     xCounter++;
-// }

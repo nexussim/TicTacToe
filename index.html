@@ -31,10 +31,10 @@
         <div id='scoreCardContainer'>
             <div id="scoreCard">
                 <div id="card" onkeyup="playerNames(event)">
-                    <div id="topLeftSide" ondblclick="playerNamesUpdate(event)">
+                    <div id="topLeftSide" ondblclick="playerNamesUpdate(event)" touchend="playerNamesUpdate(event)">
                         <input id='firstPlayerInput' maxlength="10" type="text" autofocus placeholder="Enter P1">
                     </div>
-                    <div id="topRightSide" ondblclick="playerNamesUpdate(event)">
+                    <div id="topRightSide" ondblclick="playerNamesUpdate(event)" touchend="playerNamesUpdate(event)">
                         <input id='secondPlayerInput' maxlength="10" type="text" placeholder="Enter P2">
                     </div>
                     <div id="bottomLeftSide"></div>

@@ -157,6 +157,7 @@ h1 {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 24px;
         border-bottom: 6px solid green;
         background-color:rgba(240, 166, 142, 0.863);
     }
@@ -188,5 +189,9 @@ h1 {
         background-color:rgba(240, 166, 142, 0.863);
         font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
         
+    }
+
+    input::placeholder {
+        color: rgb(5, 149, 182);
     }
 
