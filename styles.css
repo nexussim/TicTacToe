@@ -157,7 +157,6 @@ h1 {
         display: flex;
         justify-content: center;
         align-items: center;
-        max-width: 12ch;
         border-bottom: 6px solid green;
         background-color:rgba(240, 166, 142, 0.863);
     }
