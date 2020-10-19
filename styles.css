@@ -63,7 +63,7 @@ h1 {
     flex-shrink: 0;
     outline: 0;
     border: 6px solid green;
-    background-color:rgba(238, 152, 124, 0.863);
+    background-color:rgba(240, 166, 142, 0.863);
     width: 240px;
     height: 50px;
     font-size: 26px;
@@ -71,7 +71,6 @@ h1 {
     font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
     
 }
-
 
     @keyframes h1 {
     0% {opacity:0;}
@@ -129,12 +128,13 @@ h1 {
         justify-content: center;
        
     }
+
     #card {
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
         margin-bottom: 25px;
-        width: 240px;
+        width: 350px;
         height: 100px;
         border: 6px solid green;
     }
@@ -144,6 +144,8 @@ h1 {
         justify-content: center;
         align-items: center;
         font-size: 24px;
+        overflow: hidden;
+        max-width: 12ch;
         border-bottom: 6px solid green;
         border-right: 6px solid green;
         background-color:rgba(240, 166, 142, 0.863);
@@ -154,6 +156,8 @@ h1 {
         justify-content: center;
         align-items: center;
         font-size: 24px;
+        overflow: hidden;
+        max-width: 12ch;
         border-bottom: 6px solid green;
         background-color:rgba(240, 166, 142, 0.863);
     }
@@ -180,16 +184,10 @@ h1 {
         border: none;
         text-align: center;
         outline: 0;
+        font-size: 24px;
+        color: rgb(5, 149, 182);
         background-color:rgba(240, 166, 142, 0.863);
+        font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
         
     }
 
-    /* #secondPlayerInput {
-        max-width: 100px;
-        border: none;
-        text-align: center;
-        outline: 0;
-        background-color:rgba(240, 166, 142, 0.863);
-        
-    }
-     */
