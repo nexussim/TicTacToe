@@ -127,7 +127,7 @@ const victoryConditions = () => {
 const congratsMsg = (boxContent) => {
 
     if (boxContent === 'X' && firstPlayerNameText !== undefined) {
-        winningPlayer = firstPlayerNameText;
+        winningPlayer = topLeftCell.textContent;
         firstPlayerScore++;
         scoreBoardCount();
 
@@ -138,7 +138,7 @@ const congratsMsg = (boxContent) => {
     }
     
     if (boxContent === 'O' && secondPlayerNameText !== undefined) {
-        winningPlayer = secondPlayerNameText;
+        winningPlayer = topRightCell.textContent;
         secondPlayerScore++;
         scoreBoardCount();
 
@@ -189,14 +189,14 @@ const playerNames = (event) => {
 const playerNamesUpdate = (event) => {
     let selectedInput = event.target;
     if (selectedInput === topLeftCell) {
-        firstPlayerNameText = '';
+        topLeftCell.textContent = '';
         newInput = document.createElement('input');
         topLeftCell.appendChild(newInput);
         newInput.focus();
     }
 
     if (selectedInput === topRightCell) {
-        secondPlayerNameText = '';
+        topRightCell.textContent = '';
         newInputTwo = document.createElement('input');
         topRightCell.appendChild(newInputTwo);
         newInputTwo.focus();
@@ -208,7 +208,7 @@ const playerTurnUpdate = () => {
     if (lastPlayer === 'X') {
 
         if (secondPlayerNameText) {
-            victorymsg.textContent = 'It\'s ' + secondPlayerNameText + '\'s turn.';
+            victorymsg.textContent = 'It\'s ' + topRightCell.textContent + '\'s turn.';
 
         } else if (!secondPlayerNameText) {
             victorymsg.textContent = 'Second Players (O) turn.';
@@ -217,7 +217,7 @@ const playerTurnUpdate = () => {
     }
     if (lastPlayer === 'O') {
         if (firstPlayerNameText) {
-            victorymsg.textContent = 'It\'s ' + firstPlayerNameText + '\'s turn.';
+            victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
 
         } else if (!firstPlayerNameText) {
             victorymsg.textContent = 'First Players (X) turn.';
