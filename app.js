@@ -173,10 +173,9 @@ const scoreBoardCount = () => {
 
 const playerNames = (event) => {
     let selectedInput = event.target;
-    if (event.keyCode === 13) {
-        selectedInput.parentNode.textContent = selectedInput.value;
-        victorymsg.textContent = 'It\'s ' + selectedInput.value + '\'s turn.';
-    }
+    
+    selectedInput.parentNode.textContent = selectedInput.value;
+    victorymsg.textContent = 'It\'s ' + selectedInput.value + '\'s turn.';
 
     if (selectedInput.id === 'firstPlayerInput') {
         firstPlayerNameText = selectedInput.value;
@@ -239,3 +238,16 @@ const styleChanges = () => {
         styles.attributes.href.nodeValue = 'styles.css';
     }
 }
+
+topLeftCell.addEventListener('focusout',function(e){
+    if(topLeftCell.textContent === ""){
+          topLeftCell.textContent = 'Player 1 (X)';
+     }
+     
+ });
+
+ topRightCell.addEventListener('focusout',function(e){
+     if (topRightCell.textContent === "") {
+        topRightCell.textContent = 'Player 2 (O)';
+     }
+ });
