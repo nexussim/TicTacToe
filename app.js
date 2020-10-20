@@ -38,6 +38,29 @@ let xCounter = 0;
 let oCounter = 0;
 let totalCount;
 
+const firstMoveMessage = () => {
+    if (xCounter === 0 && oCounter === 0 && lastPlayer === undefined && firstPlayerNameText) {
+        victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
+
+    } else if (xCounter === 0 && oCounter === 0 && lastPlayer === undefined && !firstPlayerNameText) {
+        victorymsg.textContent = 'First Players (X) turn.';
+    }
+
+    if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === 'X' && secondPlayerNameText) {
+        victorymsg.textContent = 'It\'s ' + topRightCell.textContent + '\'s turn.';
+
+    } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === 'X' && !secondPlayerNameText) {
+        victorymsg.textContent = 'Second Players (O) turn.';
+
+    } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === 'O' && firstPlayerNameText) {
+        victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
+        
+    } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === 'O' && !firstPlayerNameText) {
+        victorymsg.textContent = 'First Players (X) turn.';
+    }
+}
+firstMoveMessage()
+
 const boardPlacement = (event) => {
     let clickedElement = event.target;
 
@@ -49,25 +72,30 @@ const boardPlacement = (event) => {
         previousRoundFirstPlayer = firstPlayerToken
         lastPlayer = firstPlayerToken;
         xCounter++;
+
     } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === firstPlayerToken) {
         clickedElement.textContent = secondPlayerToken;
         previousRoundFirstPlayer = secondPlayerToken
         lastPlayer = secondPlayerToken;
         oCounter++;
+
     } else if (xCounter === 0 && oCounter === 0 && previousRoundFirstPlayer === secondPlayerToken) {
         clickedElement.textContent = firstPlayerToken;
         previousRoundFirstPlayer = firstPlayerToken
         lastPlayer = firstPlayerToken;
         xCounter++;
+
     } else if (xCounter > oCounter || lastPlayer === firstPlayerToken) {
         clickedElement.textContent = secondPlayerToken;
         lastPlayer = secondPlayerToken;
         oCounter++;
+
     } else {
         clickedElement.textContent = firstPlayerToken;
         lastPlayer = firstPlayerToken;
         xCounter++;
     }
+
     playerTurnUpdate();
     victoryConditions(event);
 }
@@ -102,6 +130,7 @@ const congratsMsg = (boxContent) => {
         winningPlayer = topLeftCell.textContent;
         firstPlayerScore++;
         scoreBoardCount();
+
     } else if (boxContent === 'X' && firstPlayerNameText === undefined) {
         winningPlayer = 'Player 1!';
         firstPlayerScore++;
@@ -112,6 +141,7 @@ const congratsMsg = (boxContent) => {
         winningPlayer = topRightCell.textContent;
         secondPlayerScore++;
         scoreBoardCount();
+
     } else if ((boxContent === 'O' && secondPlayerNameText === undefined)) {
         winningPlayer = 'Player 2!';
         secondPlayerScore++;
@@ -120,19 +150,21 @@ const congratsMsg = (boxContent) => {
 
     victoryMsg.textContent = 'Congratulations ' + winningPlayer + '!';
     firstPlayerToken = '';
-    secondPlayerToken = ''
+    secondPlayerToken = '';
 }
 
 const resetBoard = () => {
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].textContent = '';
     }
+
     victoryMsg.textContent = '';
     firstPlayerToken = 'X';
-    secondPlayerToken = 'O'
+    secondPlayerToken = 'O';
     xCounter = 0;
     oCounter = 0;
     lastPlayer = '';
+    firstMoveMessage();
 }
 
 const scoreBoardCount = () => {
@@ -144,46 +176,51 @@ const playerNames = (event) => {
     let selectedInput = event.target;
     if (event.keyCode === 13) {
         selectedInput.parentNode.textContent = selectedInput.value;
+        victorymsg.textContent = 'It\'s ' + selectedInput.value + '\'s turn.';
     }
 
     if (selectedInput.id === 'firstPlayerInput') {
         firstPlayerNameText = selectedInput.value;
+
     } else {
         secondPlayerNameText = selectedInput.value;
     }
 }
 
 const playerNamesUpdate = (event) => {
-    let selectedInput = event.target
+    let selectedInput = event.target;
     if (selectedInput === topLeftCell) {
         topLeftCell.textContent = '';
         newInput = document.createElement('input');
         topLeftCell.appendChild(newInput);
-        newInput.focus()
+        newInput.focus();
     }
 
     if (selectedInput === topRightCell) {
         topRightCell.textContent = '';
         newInputTwo = document.createElement('input');
         topRightCell.appendChild(newInputTwo);
-        newInputTwo.focus()
+        newInputTwo.focus();
     }
 }
 
 const playerTurnUpdate = () => {
 
     if (lastPlayer === 'X') {
+
         if (secondPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topRightCell.textContent + '\'s turn.';
+
         } else if (!secondPlayerNameText) {
             victorymsg.textContent = 'Second Players (O) turn.';
             return;
         } 
     }
     if (lastPlayer === 'O') {
-        if (secondPlayerNameText) {
+        if (firstPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
-        } else if (!secondPlayerNameText) {
+
+        } else if (!firstPlayerNameText) {
             victorymsg.textContent = 'First Players (X) turn.';
             return;
         } 
@@ -195,8 +232,10 @@ const styleChanges = () => {
     let cssFile = styles.attributes.href.nodeValue;
     if (cssFile === 'styles.css') {
         styles.attributes.href.nodeValue = 'styles2.css';
+
     } else if (cssFile === 'styles2.css') {
         styles.attributes.href.nodeValue = 'styles3.css';
+
     } else if (cssFile === 'styles3.css') {
         styles.attributes.href.nodeValue = 'styles.css';
     }
