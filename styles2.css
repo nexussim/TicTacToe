@@ -73,9 +73,23 @@ h1 {
     
 }
 
+#resetGameButton:active {
+    transform: translateY(4px);
+}
+
+#theme:active {
+    transform: translateY(4px);
+}
+
 #resetGameButton:hover {
     font-size: 28px;
+    cursor: pointer;
 }    
+
+#theme:hover {
+ font-size: 28px;
+ cursor: pointer;
+}
 
     @keyframes h1 {
     0% {opacity:0;}
@@ -109,7 +123,7 @@ h1 {
         margin-top: 10px;
         flex-shrink: 0;
         font-size: 21px;
-        animation: blinker 1.5s linear infinite;
+        animation: blinker 1.2s linear infinite;
     }
 
     @keyframes blinker {

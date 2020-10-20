@@ -62,19 +62,33 @@ h1 {
     align-items: center;
     flex-shrink: 0;
     outline: 0;
-    border: 6px solid green;
-    background-color:rgba(240, 166, 142, 0.863);
     width: 240px;
     height: 50px;
     font-size: 26px;
     color: rgb(5, 149, 182);
+    border: 6px solid green;
+    background-color:rgba(240, 166, 142, 0.863);
     font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
     
 }
 
+#resetGameButton:active {
+    transform: translateY(4px);
+}
+
+#theme:active {
+    transform: translateY(4px);
+}
+
 #resetGameButton:hover {
     font-size: 28px;
+    cursor: pointer;
 }    
+
+#theme:hover {
+ font-size: 28px;
+ cursor: pointer;
+}
 
     @keyframes h1 {
     0% {opacity:0;}
@@ -108,7 +122,7 @@ h1 {
         margin-top: 10px;
         flex-shrink: 0;
         font-size: 21px;
-        animation: blinker 1.5s linear infinite;
+        animation: blinker 1.2s linear infinite;
     }
 
     @keyframes blinker {
