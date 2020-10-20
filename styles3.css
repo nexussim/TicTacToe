@@ -201,9 +201,12 @@ h1 {
         text-align: center;
         outline: 0;
         font-size: 24px;
-        color: rgb(5, 149, 182);
+        color: rgba(255, 255, 255, 0.781);
         background-color: rgba(255, 64, 0, 0.027);
         font-family: Comic Sans MS, Comic Sans, cursive, sans-serif;
         
     }
 
+    input::placeholder {
+        color: rgba(255, 255, 255, 0.781);
+    }
