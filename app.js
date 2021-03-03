@@ -33,7 +33,7 @@ let firstPlayerScore = 0;
 let secondPlayerScore = 0;
 let firstPlayerToken = 'X';
 let secondPlayerToken = 'O'
-let winningPlayer;
+let winningPlayer = '';
 let xCounter = 0;
 let oCounter = 0;
 let totalCount;
@@ -62,6 +62,11 @@ const firstMoveMessage = () => {
 firstMoveMessage()
 
 const boardPlacement = (event) => {
+
+    if (winningPlayer === undefined) {
+        return;
+    }
+
     let clickedElement = event.target;
 
     if (clickedElement.textContent) {
@@ -151,6 +156,7 @@ const congratsMsg = (boxContent) => {
     victoryMsg.textContent = 'Congratulations ' + winningPlayer + '!';
     firstPlayerToken = '';
     secondPlayerToken = '';
+    winningPlayer = undefined;
 }
 
 const resetBoard = () => {
@@ -163,6 +169,7 @@ const resetBoard = () => {
     xCounter = 0;
     oCounter = 0;
     lastPlayer = '';
+    winningPlayer = '';
     firstMoveMessage();
 }
 
