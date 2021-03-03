@@ -176,10 +176,20 @@ const playerNames = (event) => {
     
     selectedInput.parentNode.textContent = selectedInput.value;
 
+    if(xCounter > oCounter && secondPlayerNameText !== undefined) {
+        victorymsg.textContent = 'It\'s ' + secondPlayerNameText + '\'s turn.';
+    } else if (xCounter > oCounter && secondPlayerNameText === undefined) {
+        victorymsg.textContent = 'It\'s ' + "Player 2 (O)" + '\'s turn.';
+    } else if (xCounter < oCounter && firstPlayerNameText !== undefined) {
+        victorymsg.textContent = 'It\'s ' + firstPlayerNameText + '\'s turn.';
+    } else if (xCounter < oCounter && firstPlayerNameText === undefined) {
+        victorymsg.textContent = 'It\'s ' + "Player 1 (X)" + '\'s turn.';
+    }
+
     if (selectedInput.id === 'firstPlayerInput') {
         firstPlayerNameText = selectedInput.value;
 
-    } else {
+    } else if (selectedInput.id === 'secondPlayerInput') {
         secondPlayerNameText = selectedInput.value;
     }
 }
