@@ -185,10 +185,13 @@ const playerNames = (event) => {
 
     if(xCounter > oCounter && secondPlayerNameText !== undefined) {
         victorymsg.textContent = 'It\'s ' + secondPlayerNameText + '\'s turn.';
+
     } else if (xCounter > oCounter && secondPlayerNameText === undefined) {
         victorymsg.textContent = 'It\'s ' + "Player 2 (O)" + '\'s turn.';
+
     } else if (xCounter < oCounter && firstPlayerNameText !== undefined) {
         victorymsg.textContent = 'It\'s ' + firstPlayerNameText + '\'s turn.';
+        
     } else if (xCounter < oCounter && firstPlayerNameText === undefined) {
         victorymsg.textContent = 'It\'s ' + "Player 1 (X)" + '\'s turn.';
     }
@@ -199,6 +202,7 @@ const playerNames = (event) => {
     } else if (selectedInput.id === 'secondPlayerInput') {
         secondPlayerNameText = selectedInput.value;
     }
+    playerTurnUpdate();
 }
 
 const playerNamesUpdate = (event) => {
@@ -230,7 +234,7 @@ const playerTurnUpdate = () => {
             return;
         } 
     }
-    if (lastPlayer === 'O') {
+    if (lastPlayer === 'O' || lastPlayer === undefined) {
         if (firstPlayerNameText) {
             victorymsg.textContent = 'It\'s ' + topLeftCell.textContent + '\'s turn.';
 
@@ -258,12 +262,12 @@ const styleChanges = () => {
 topLeftCell.addEventListener('focusout',function(e){
     if(topLeftCell.textContent === ""){
           topLeftCell.textContent = 'Player 1 (X)';
-     }
+    }
      
- });
+});
 
- topRightCell.addEventListener('focusout',function(e){
-     if (topRightCell.textContent === "") {
+topRightCell.addEventListener('focusout',function(e){
+    if (topRightCell.textContent === "") {
         topRightCell.textContent = 'Player 2 (O)';
-     }
- });
+    }
+});
